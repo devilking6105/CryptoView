@@ -37,11 +37,11 @@ private slots:
 
     void on_coin1_btn_clicked();
 
-    void on_coin2_btn_clicked();
+  /*  void on_coin2_btn_clicked();
 
     void on_coin3_btn_clicked();
 
-    void on_coin4_btn_clicked();
+    void on_coin4_btn_clicked(); */
 
 private:
     Ui::CryptoView *ui;
