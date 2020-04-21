@@ -18,7 +18,7 @@ CryptoView::CryptoView(QWidget *parent) :
 
     httpClient = new HTTPClient(this);
     connect(httpClient, &HTTPClient::response, this, &CryptoView::onResponse);
-    httpClient->get(QUrl("https://api.coinmarketcap.com/v1/ticker/?limit=4"));
+    httpClient->get(QUrl("https://altmarkets.io/api/v2/tickers/hthbtc"));
 
     socketClient = new SocketClient(this);
     connect(socketClient, &SocketClient::coinUpdate, this, &CryptoView::onCoinUpdate);
@@ -49,7 +49,7 @@ void CryptoView::pushCoin(coin& coin){
     case 1:
         setCurrencyLabelText(coin, *ui->coin1_img, *ui->coin1_value, *ui->coin1_title);
         break;
-    case 2:
+  /*  case 2:
         setCurrencyLabelText(coin, *ui->coin2_img, *ui->coin2_value, *ui->coin2_title);
         break;
     case 3:
@@ -59,7 +59,7 @@ void CryptoView::pushCoin(coin& coin){
         setCurrencyLabelText(coin, *ui->coin4_img, *ui->coin4_value, *ui->coin4_title);
         break;
     default:
-        break;
+        break; */
     }
 
     //qDebug() << "Rank is: " << rank;
@@ -149,7 +149,7 @@ void CryptoView::onResponse(QNetworkReply *reply)
     }
 
     // Open our websocket connection and pass top coins
-    socketClient->open(QUrl("wss://api.bitfinex.com/ws/2"), symbols);
+    socketClient->open(QUrl("https://altmarkets.io/api/v2/tickers/hthbtc"), symbols);
 }
 
 void CryptoView::on_coin1_btn_clicked()
@@ -160,7 +160,7 @@ void CryptoView::on_coin1_btn_clicked()
 }
 
 
-void CryptoView::on_coin2_btn_clicked()
+/*void CryptoView::on_coin2_btn_clicked()
 {
     //Show candle stick widget
     candles = new CandleStickDialog(coinRankMap.value(2), this);
@@ -179,4 +179,4 @@ void CryptoView::on_coin4_btn_clicked()
     //Show candle stick widget
     candles = new CandleStickDialog(coinRankMap.value(4), this);
     candles->show();
-}
+} */
